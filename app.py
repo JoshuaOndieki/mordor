@@ -7,9 +7,10 @@
 """
 
 from docopt import docopt,DocoptExit
-from functions import Mordor, skills_import
-
-
+from functions import Mordor
+import cmd
+import os
+from termcolor import colored,cprint
 
 
 def docopt_cmd(func):
@@ -48,30 +49,31 @@ def intro():
 
 
 class MORDOR(cmd.Cmd):
-    prompt = "MORDOR $$$"
+    text = colored('MORDOR $$$', 'green', attrs=['blink'])
+    prompt = text
 
     @docopt_cmd
-    def do_add_skills(self, arg):
+    def do_add(self, arg):
         """Usage: add <skill>"""
         skill=arg["<skill>"]
-        print(add_skill(skill))
+        print(Mordor.add_skill(skill))
 
     @docopt_cmd
-    def do_list_skills(self, arg):
+    def do_skills(self, arg):
         """Usage: skills --list"""
-        print(view_skills())
+        print(Mordor.view_skills())
 
     @docopt_cmd
-    def do_complete_skill(self, arg):
+    def do_complete(self, arg):
         """Usage: complete <skill>"""
         skill=arg["<skill>"]
-        print(complete_skill(skill))
+        print(Mordor.complete_skill(skill))
 
     @docopt_cmd
     def do_progress(self, arg):
         """Usage: progress"""
-        skills=skills_import()
-        print(progress(skills))
+        skills=Mordor.skills_import()
+        print(Mordor.progress(skills))
 
 
 
