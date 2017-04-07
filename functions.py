@@ -1,6 +1,8 @@
 
 class Mordor():
     skills={}
+    def skills_import():
+        return skills
     def add_skill():
         pass
 
