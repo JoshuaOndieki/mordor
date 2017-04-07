@@ -7,7 +7,7 @@
 """
 
 from docopt import docopt,DocoptExit
-from functions import Mordor,skills
+from functions import Mordor, skills_import
 
 
 
@@ -70,7 +70,7 @@ class MORDOR(cmd.Cmd):
     @docopt_cmd
     def do_progress(self, arg):
         """Usage: progress"""
-
+        skills=skills_import()
         print(progress(skills))
 
 
